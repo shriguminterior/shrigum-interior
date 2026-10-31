@@ -39,7 +39,7 @@ function contact() {
 }
 
 function home() {
-  return `<section class="hero" aria-label="${escape(c.brand.title)}">${img(c.brand.hero, true)}<h1>${img(c.brand.heroLogo, true)}</h1></section>
+  return `<section class="hero" aria-label="${escape(c.brand.title)}">${img(c.brand.hero, true)}<h1><span class="logo-art">${img(c.brand.heroLogo, true)}</span></h1></section>
     <section class="about"><div class="reading center"><h2>${escape(c.about.title)}</h2>${paragraphs(c.about.paragraphs)}</div>${gallery(c.about.gallery, 'showcase')}</section>
     <section class="process wrap"><h2 class="center">${escape(c.processTitle)}</h2><ol class="process-grid">${c.process.map((step, index) => `<li><span class="step-number" aria-hidden="true">${index + 1}</span><h3>${escape(step.title)}</h3><p>${escape(step.text)}</p></li>`).join('')}</ol><div class="center">${button(c.ui.book, '#/appointment')}</div></section>
     <section class="projects-section wrap"><h2 class="center">${escape(c.projectsTitle)}</h2>${categoryCards()}</section>
@@ -92,7 +92,7 @@ function render() {
   else page = notFound();
   document.title = title === c.brand.title ? `${c.brand.title} | ${c.brand.description}` : `${title} | ${c.brand.title}`;
   const navRoute = route === 'project' ? 'projects' : route;
-  app.innerHTML = `<a class="skip-link" href="#main">${escape(c.ui.skip)}</a><header class="site-header"><a class="brand" href="#/">${img(c.brand.logo, true)}</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">${escape(c.ui.menu)} <span aria-hidden="true">☰</span></button><nav id="site-nav" aria-label="${escape(c.brand.title)}">${c.navigation.map(item => `<a href="${escape(item.href)}" ${item.href === `#/${navRoute}` ? 'aria-current="page"' : ''}>${escape(item.label)}</a>`).join('')}</nav></header><main id="main" tabindex="-1">${page}</main><footer><p>${escape(c.brand.name)}</p><a href="mailto:${escape(c.brand.email)}">${escape(c.brand.email)}</a><small>${escape(c.brand.copyright)}</small></footer><dialog id="lightbox" aria-label="${escape(c.ui.gallery)}"><button class="lightbox-close" aria-label="${escape(c.ui.close)}">×</button><button class="lightbox-prev" aria-label="${escape(c.ui.previous)}">←</button><figure><img alt=""><figcaption></figcaption></figure><button class="lightbox-next" aria-label="${escape(c.ui.next)}">→</button></dialog>`;
+  app.innerHTML = `<a class="skip-link" href="#main">${escape(c.ui.skip)}</a><header class="site-header"><a class="brand" href="#/"><span class="logo-art">${img(c.brand.logo, true)}</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">${escape(c.ui.menu)} <span aria-hidden="true">☰</span></button><nav id="site-nav" aria-label="${escape(c.brand.title)}">${c.navigation.map(item => `<a href="${escape(item.href)}" ${item.href === `#/${navRoute}` ? 'aria-current="page"' : ''}>${escape(item.label)}</a>`).join('')}</nav></header><main id="main" tabindex="-1">${page}</main><footer><p>${escape(c.brand.name)}</p><a href="mailto:${escape(c.brand.email)}">${escape(c.brand.email)}</a><small>${escape(c.brand.copyright)}</small></footer><dialog id="lightbox" aria-label="${escape(c.ui.gallery)}"><button class="lightbox-close" aria-label="${escape(c.ui.close)}">×</button><button class="lightbox-prev" aria-label="${escape(c.ui.previous)}">←</button><figure><img alt=""><figcaption></figcaption></figure><button class="lightbox-next" aria-label="${escape(c.ui.next)}">→</button></dialog>`;
   wireEvents();
 }
 

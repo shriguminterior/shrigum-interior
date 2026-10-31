@@ -6,17 +6,16 @@ await mkdir(directory, { recursive: true });
 const failures = [];
 let completed = 0;
 async function download(file) {
-  const logo = file.includes('8e73fc1') || file.includes('f56de250');
-  const outputFile = logo ? file : file.replace(/\.(png|jpg)$/, '.webp');
+  const outputFile = file.replace(/\.(png|jpg)$/, '.webp');
   const target = new URL(outputFile, directory);
   try { await access(target); completed++; return; } catch {}
   const original = `https://static.wixstatic.com/media/${file}`;
-  const url = logo ? original : `${original}/v1/fit/w_1400,h_1100,q_80/${outputFile}`;
+  const url = `${original}/v1/fit/w_1400,h_1100,q_80/${outputFile}`;
   try {
     const response = await fetch(url, { signal: AbortSignal.timeout(45000) });
     if (!response.ok || !response.headers.get('content-type')?.startsWith('image/')) throw new Error(`HTTP ${response.status}`);
     await writeFile(target, new Uint8Array(await response.arrayBuffer()));
-    if (!logo) { try { await unlink(new URL(file, directory)); } catch (error) { if (error.code !== 'ENOENT') throw error; } }
+    try { await unlink(new URL(file, directory)); } catch (error) { if (error.code !== 'ENOENT') throw error; }
     completed++;
   } catch (error) { failures.push({ file, error: String(error) }); }
 }

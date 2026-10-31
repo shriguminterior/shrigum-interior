@@ -9,7 +9,7 @@ export interface Project { slug: string; title: string; category: string; cover:
 export interface Post { slug: string; title: string; date: string; readTime: string; image: Image; paragraphs: string[] }
 export interface Field { name: string; label: string; type: 'text' | 'email' | 'tel' | 'number' | 'date' | 'textarea'; required?: boolean; min?: number }
 const image = (file: string, alt: string): Image => ({
-  src: `/assets/${file.includes('8e73fc1') || file.includes('f56de250') ? file : file.replace(/\.(png|jpg)$/, '.webp')}`,
+  src: `/assets/${file.replace(/\.(png|jpg)$/, '.webp')}`,
   alt,
 });
 const gallery = (files: string[], title: string): Image[] => files.map((file, i) => image(file, `${title} — view ${i + 1}`));
@@ -19,8 +19,8 @@ export const content = {
   brand: {
     name: 'SHRIGUM INTERIOR', title: 'Shrigum Interior',
     description: 'Residential and commercial interior design in Mumbai.',
-    logo: image('c1605f_8e73fc1ea2b741f59c94ef7cca5efacd~mv2.png', 'Shrigum Interior'),
-    heroLogo: image('c1605f_f56de250727748cc8ca978ec1aa236ea~mv2.png', 'Shrigum Interior'),
+    logo: { src: '/assets/shrigum-logo.png', alt: 'Shrigum Interior' },
+    heroLogo: { src: '/assets/shrigum-logo.png', alt: 'Shrigum Interior' },
     hero: image('c1605f_837e4854a836415c8103a25e55d8c498~mv2.jpg', 'A calm interior with natural textures and greenery'),
     email: 'shriguminterior99@gmail.com', address: 'Sion East, Sion, Mumbai, Maharashtra, India',
     // The source has a placeholder phone number. Set your real number here to display it.
