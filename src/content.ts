@@ -37,7 +37,7 @@ export const content = {
       'Welcome to Shrigum Interior, where innovation meets elegance and spaces are brought to life with creativity and flair. With a passion for design and a dedication to excellence, our firm is committed to transforming interiors into stunning and functional masterpieces',
       'With years of experience in the industry, We bring a wealth of knowledge and expertise to every project. We stay at the forefront of the latest trends, and innovative materials, to offer our clients the best solutions for their spaces. From concept development and spatial planning to sourcing the finest materials and overseeing the construction process, we are dedicated to delivering seamless, stress-free experiences from start to finish',
     ],
-    gallery: gallery(['c1605f_5c5faef916704df59e25679f34eddbb8~mv2.jpg', 'c1605f_1934077b366d490a9b9ef7ce8808795d~mv2.jpg', 'c1605f_94d311efd6474456a94e99e553b166aa~mv2.jpg'], 'Shrigum Interior residential design'),
+    gallery: gallery(['c1605f_44db02393fda460187d8be2b03be74b4~mv2.png', 'c1605f_7a915aef9f7a46f7b63dbff7426339ed~mv2.png', 'c1605f_d646d40c96c449f7ad746e7b3534be99~mv2.png'], 'Shrigum Interior residential design'),
   },
   processTitle: 'Our Process',
   process: [
