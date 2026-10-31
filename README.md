@@ -20,7 +20,9 @@ All rendered text, navigation, project data, article content, image references, 
 - Add an object to `posts` to create a blog card and article automatically. Start a paragraph with `## ` for a section heading.
 - Add to `content.services` to create an offer card and room gallery automatically.
 - Add to `content.process` to create another numbered process step automatically.
-- Put new image files in `public/assets/` and reference `/assets/your-image.jpg`. Existing source images are stored locally. The download helper is only for the original imported Wix assets.
+- Put new image files in `public/assets/` and use their exact filenames in `image()` or `gallery()` in the content file (for example, `image('new-project-kitchen.webp', 'Kitchen in the new project')`). The helper preserves file extensions; PNG, JPEG, and WebP are supported.
+- Image names use lowercase words separated by hyphens: `dadar-el-mejor-living-kitchen-01.webp`, `two-bhk-kitchen-03.webp`, `service-bedroom.webp`, and `shrigum-logo.png`. Numbered suffixes identify multiple views of a room. Shared images keep one filename wherever they are reused.
+- The download helper is only for the original imported Wix photos. `scripts/wix-assets.json` maps their semantic filenames to their source identifiers, so `node scripts/download-assets.mjs` can restore missing photos without reverting filenames. The uploaded logo is maintained locally.
 - Set `content.brand.phone` to the correct business number. The Wix placeholder number was omitted.
 
 During development, saving the content file refreshes the preview automatically. On a hosted site, content changes require a new build and deployment; editing a local TypeScript file does not update an already deployed website by itself.
