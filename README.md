@@ -15,7 +15,7 @@ For a production build: `npm run build`. Output is in `dist/`; deploy it to any 
 
 The workflow in `.github/workflows/deploy-pages.yml` builds and deploys on pushes to `main`. It uses GitHub's built-in token; no personal access token or hosting secret is required. The build reads the Pages base path so images and galleries work under a repository URL or a custom domain.
 
-The intended repository is `https://github.com/abhishekjagushte/shrigum-interior` and the default Pages address is `https://abhishekjagushte.github.io/shrigum-interior/`. These become live only after the repository is uploaded, **Settings → Pages → Source** is set to **GitHub Actions**, and the first workflow succeeds.
+The repository belongs at `https://github.com/shriguminterior/shrigum-interior` and its default Pages address is `https://shriguminterior.github.io/shrigum-interior/`. After the ownership transfer is accepted, enable **Settings → Pages → Source → GitHub Actions**, re-enable the deployment workflow, and run its first deployment under the new owner.
 
 After GitHub setup, publish changes from this project directory:
 
