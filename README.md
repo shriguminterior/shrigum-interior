@@ -11,6 +11,24 @@ npm run dev
 
 For a production build: `npm run build`. Output is in `dist/`; deploy it to any static web host. `npm run preview` previews that build. Node 18 or newer is required by the selected Vite 6 toolchain.
 
+## GitHub Pages deployment
+
+The workflow in `.github/workflows/deploy-pages.yml` builds and deploys on pushes to `main`. It uses GitHub's built-in token; no personal access token or hosting secret is required. The build reads the Pages base path so images and galleries work under a repository URL or a custom domain.
+
+The intended repository is `https://github.com/abhishekjagushte/shrigum-interior` and the default Pages address is `https://abhishekjagushte.github.io/shrigum-interior/`. These become live only after the repository is uploaded, **Settings → Pages → Source** is set to **GitHub Actions**, and the first workflow succeeds.
+
+After GitHub setup, publish changes from this project directory:
+
+```sh
+git add src/content.ts public/assets/
+git commit -m "Update website content"
+git push origin main
+```
+
+For layout changes, stage the relevant files in `src/` too. Check the repository's **Actions** tab for deployment progress. Failed builds leave the last successful deployment in place. You can also run the deployment manually from the Actions tab.
+
+GitHub Pages deployment updates the GitHub Pages address. The existing `chatgpt.site` publication remains a separate deployment and is not updated by this workflow.
+
 ## Edit content
 
 All rendered text, navigation, project data, article content, image references, and form labels live in **src/content.ts**. Layout and behavior live in **src/main.ts**; styles live in **src/style.css**.

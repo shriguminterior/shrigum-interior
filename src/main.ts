@@ -3,7 +3,8 @@ import './style.css';
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
 const escape = (value: string) => value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!);
-const img = (image: Image, eager = false) => `<img src="${escape(image.src)}" alt="${escape(image.alt)}" loading="${eager ? 'eager' : 'lazy'}" decoding="async">`;
+const imageUrl = (src: string) => src.startsWith('/assets/') ? `${import.meta.env.BASE_URL}${src.slice(1)}` : src;
+const img = (image: Image, eager = false) => `<img src="${escape(imageUrl(image.src))}" alt="${escape(image.alt)}" loading="${eager ? 'eager' : 'lazy'}" decoding="async">`;
 const paragraphs = (items: string[]) => items.map(p => p.startsWith('## ') ? `<h2>${escape(p.slice(3))}</h2>` : `<p>${escape(p)}</p>`).join('');
 const button = (label: string, href: string) => `<a class="button" href="${escape(href)}">${escape(label)}</a>`;
 let activeImages: Image[] = [];
@@ -100,7 +101,7 @@ function showImage() {
   const image = activeImages[lightboxIndex];
   const dialog = document.querySelector<HTMLDialogElement>('#lightbox')!;
   const picture = dialog.querySelector('img')!;
-  picture.src = image.src;
+  picture.src = imageUrl(image.src);
   picture.alt = image.alt;
   dialog.querySelector('figcaption')!.textContent = `${image.alt} (${lightboxIndex + 1} / ${activeImages.length})`;
 }
